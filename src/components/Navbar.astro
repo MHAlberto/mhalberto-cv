@@ -1,11 +1,20 @@
 ---
-const BASE = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL;
+
+const link = (path: string = '') => {
+  const cleanBase = base.endsWith('/') ? base : `${base}/`;
+  const cleanPath = path.replace(/^\/+/, '');
+  return `${cleanBase}${cleanPath}`;
+};
 ---
+
+
+
 
 <header class="navbar">
   <div class="container">
-    <a href={BASE} class="logo">
-      MI PORTAFOLIO
+    <a href={link('')} class="logo">
+      M.H. Alberto
     </a>
 
     <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
@@ -16,8 +25,8 @@ const BASE = import.meta.env.BASE_URL;
 
     <nav id="nav-menu" class="nav-menu">
       <ul class="main-list">
-        <li><a href={`${BASE}`} class="nav-link">Inicio</a></li>
-        <li><a href={`${BASE}sobre`} class="nav-link">Sobre Mí</a></li>
+        <li><a href={link('')} class="nav-link">Inicio</a></li>
+        <li><a href={link('sobre')} class="nav-link">Sobre Mí</a></li>
 
         <li class="dropdown">
           <button class="nav-link dropdown-btn">
@@ -27,13 +36,13 @@ const BASE = import.meta.env.BASE_URL;
             </svg>
           </button>
           <ul class="dropdown-content">
-            <li><a href={`${BASE}proyectos/web`}>Web Development</a></li>
-            <li><a href={`${BASE}proyectos/node`}>Node.js</a></li>
-            <li><a href={`${BASE}proyectos/python`}>Python & AI</a></li>
+            <li><a href={link('proyectos/web')}>Web Development</a></li>
+            <li><a href={link('proyectos/node')}>Node.js</a></li>
+            <li><a href={link('proyectos/python')}>Python & AI</a></li>
           </ul>
         </li>
 
-        <li><a href={`${BASE}contacto`} class="nav-link">Contacto</a></li>
+        <li><a href={link('contacto')} class="nav-link">Contacto</a></li>
 
         <li class="dropdown">
           <button class="nav-link dropdown-btn">
@@ -43,13 +52,13 @@ const BASE = import.meta.env.BASE_URL;
             </svg>
           </button>
           <ul class="dropdown-content">
-            <li><a href={`${BASE}blog/tutoriales`}>Tutoriales</a></li>
-            <li><a href={`${BASE}blog/proyectos`}>Reseñas</a></li>
+            <li><a href={link('blog/tutoriales')}>Tutoriales</a></li>
+            <li><a href={link('blog/proyectos')}>Reseñas</a></li>
           </ul>
         </li>
 
         <li>
-          <a href={`${BASE}cv`} class="nav-link btn-primary">
+          <a href={link('cv')} class="nav-link btn-primary">
             Currículum
           </a>
         </li>
@@ -57,8 +66,6 @@ const BASE = import.meta.env.BASE_URL;
     </nav>
   </div>
 </header>
-
-
 
 <script>
     // Menú Móvil
