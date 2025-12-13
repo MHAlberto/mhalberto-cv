@@ -1,53 +1,64 @@
 ---
+const BASE = import.meta.env.BASE_URL;
 ---
 
 <header class="navbar">
-    <div class="container">
-        <a href="/" class="logo">
-            MI PORTAFOLIO
-        </a>
+  <div class="container">
+    <a href={BASE} class="logo">
+      MI PORTAFOLIO
+    </a>
 
-        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
 
-        <nav id="nav-menu" class="nav-menu">
-            <ul class="main-list">
-                <li><a href="/" class="nav-link">Inicio</a></li>
-                <li><a href="/sobre" class="nav-link">Sobre Mí</a></li>
-                
-                <li class="dropdown">
-                    <button class="nav-link dropdown-btn">
-                        Proyectos 
-                        <svg class="arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1L5 5L9 1"/></svg>
-                    </button>
-                    <ul class="dropdown-content">
-                        <li><a href="/proyectos/web">Web Development</a></li>
-                        <li><a href="/proyectos/node">Node.js</a></li>
-                        <li><a href="/proyectos/python">Python & AI</a></li>
-                    </ul>
-                </li>
+    <nav id="nav-menu" class="nav-menu">
+      <ul class="main-list">
+        <li><a href={`${BASE}`} class="nav-link">Inicio</a></li>
+        <li><a href={`${BASE}sobre`} class="nav-link">Sobre Mí</a></li>
 
-                <li><a href="/contacto" class="nav-link">Contacto</a></li>
+        <li class="dropdown">
+          <button class="nav-link dropdown-btn">
+            Proyectos
+            <svg class="arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M1 1L5 5L9 1"/>
+            </svg>
+          </button>
+          <ul class="dropdown-content">
+            <li><a href={`${BASE}proyectos/web`}>Web Development</a></li>
+            <li><a href={`${BASE}proyectos/node`}>Node.js</a></li>
+            <li><a href={`${BASE}proyectos/python`}>Python & AI</a></li>
+          </ul>
+        </li>
 
-                <li class="dropdown">
-                    <button class="nav-link dropdown-btn">
-                        Blog
-                        <svg class="arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1L5 5L9 1"/></svg>
-                    </button>
-                    <ul class="dropdown-content">
-                        <li><a href="/blog/tutoriales">Tutoriales</a></li>
-                        <li><a href="/blog/proyectos">Reseñas</a></li>
-                    </ul>
-                </li>
-                
-                <li><a href="/cv" class="nav-link btn-primary">Currículum</a></li>
-            </ul>
-        </nav>
-    </div>
+        <li><a href={`${BASE}contacto`} class="nav-link">Contacto</a></li>
+
+        <li class="dropdown">
+          <button class="nav-link dropdown-btn">
+            Blog
+            <svg class="arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M1 1L5 5L9 1"/>
+            </svg>
+          </button>
+          <ul class="dropdown-content">
+            <li><a href={`${BASE}blog/tutoriales`}>Tutoriales</a></li>
+            <li><a href={`${BASE}blog/proyectos`}>Reseñas</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href={`${BASE}cv`} class="nav-link btn-primary">
+            Currículum
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
+
+
 
 <script>
     // Menú Móvil
