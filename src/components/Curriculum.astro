@@ -1,0 +1,487 @@
+---
+title: "Curriculum"
+
+// Información completa de tu CV
+const curriculumInfo = {
+    name: "Mario C.",
+    title: "Desarrollador Backend Senior",
+    description: `
+        Soy un desarrollador backend apasionado por crear sistemas robustos y eficientes.
+        Mi especialidad es Python, con amplia experiencia en frameworks como Django, FastAPI y Flask.
+        También he trabajado con Node.js y Express para proyectos de backend escalables,
+        y con Rust usando Axum para sistemas de alto rendimiento.
+        Tengo una fuerte orientación a buenas prácticas, pruebas unitarias, APIs RESTful y arquitectura modular.
+    `,
+    experience: [
+        {
+            role: "Backend Developer",
+            company: "Tech Solutions",
+            duration: "Enero 2023 - Presente",
+            description: "Desarrollo de APIs RESTful con Python y FastAPI, integración con bases de datos PostgreSQL y MongoDB, optimización de consultas y despliegue en AWS."
+        },
+        {
+            role: "Fullstack Developer",
+            company: "WebFactory",
+            duration: "Marzo 2021 - Diciembre 2022",
+            description: "Creación de aplicaciones web completas usando Node.js, Express, React y bases de datos NoSQL. Implementación de autenticación JWT y microservicios."
+        },
+        {
+            role: "Desarrollador Python",
+            company: "DataTech",
+            duration: "Junio 2020 - Febrero 2021",
+            description: "Automatización de procesos y análisis de datos usando Python. Desarrollo de scripts y microservicios para mejorar procesos internos."
+        }
+    ],
+    education: [
+        {
+            degree: "Licenciatura en Matemáticas",
+            institution: "Universidad Nacional",
+            duration: "2015 - 2019"
+        }
+    ],
+    skills: [
+        "Python (Django, FastAPI, Flask)",
+        "Node.js (Express)",
+        "Rust (Axum)",
+        "Bases de datos SQL y NoSQL",
+        "RESTful APIs",
+        "Testing y TDD",
+        "Git & Control de versiones",
+        "Deploy en AWS y Docker"
+    ],
+    projects: [
+        { name: "Sistema de Gestión de Inventarios", link: "#" },
+        { name: "API de Servicios Financieros", link: "#" },
+        { name: "Plataforma de E-commerce", link: "#" }
+    ],
+    email: "mario@example.com",
+    github: "https://github.com/mario",
+    linkedin: "https://linkedin.com/in/mario",
+    website: "https://mario-portfolio.com",
+    cvFile: "/assets/CV.pdf"
+};
+---
+
+<section class="curriculum-section">
+    <div class="container">
+        
+        <!-- Header con botón de descarga -->
+        <div class="cv-header">
+            <div class="cv-title-area">
+                <h1>{curriculumInfo.name}</h1>
+                <h2>{curriculumInfo.title}</h2>
+            </div>
+            <a href={curriculumInfo.cvFile} target="_blank" class="btn-download">Descargar CV</a>
+        </div>
+
+        <!-- Descripción -->
+        <div class="cv-description">
+            <p>{curriculumInfo.description}</p>
+        </div>
+
+        <!-- Grid de secciones -->
+        <div class="cv-grid">
+            
+            <!-- Experiencia -->
+            <div class="cv-section cv-section-full">
+                <h3>Experiencia Profesional</h3>
+                <div class="experience-list">
+                    {curriculumInfo.experience.map(exp => (
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <div>
+                                    <h4>{exp.role}</h4>
+                                    <span class="company">{exp.company}</span>
+                                </div>
+                                <span class="duration">{exp.duration}</span>
+                            </div>
+                            <p>{exp.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <!-- Educación -->
+            <div class="cv-section">
+                <h3>Educación</h3>
+                <div class="education-list">
+                    {curriculumInfo.education.map(ed => (
+                        <div class="education-item">
+                            <h4>{ed.degree}</h4>
+                            <span class="institution">{ed.institution}</span>
+                            <span class="duration">{ed.duration}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <!-- Habilidades -->
+            <div class="cv-section">
+                <h3>Habilidades Técnicas</h3>
+                <ul class="skills-list">
+                    {curriculumInfo.skills.map(skill => (
+                        <li>{skill}</li>
+                    ))}
+                </ul>
+            </div>
+
+            <!-- Proyectos -->
+            <div class="cv-section">
+                <h3>Proyectos Destacados</h3>
+                <ul class="projects-list">
+                    {curriculumInfo.projects.map(proj => (
+                        <li>
+                            <a href={proj.link} target="_blank">{proj.name}</a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <!-- Contacto -->
+            <div class="cv-section">
+                <h3>Contacto</h3>
+                <ul class="contact-list">
+                    <li><a href={`mailto:${curriculumInfo.email}`}>Email</a></li>
+                    <li><a href={curriculumInfo.github} target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href={curriculumInfo.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href={curriculumInfo.website} target="_blank" rel="noopener noreferrer">Website</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Botón de descarga inferior -->
+        <div class="cv-footer">
+            <a href={curriculumInfo.cvFile} target="_blank" class="btn-download">Descargar CV</a>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* --- Variables --- */
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #111111;
+        --accent-color: #666666;
+        --border-color: #eeeeee;
+        --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    /* --- Curriculum Section --- */
+    .curriculum-section {
+        background-color: var(--bg-color);
+        padding: 120px 0;
+        font-family: var(--font-main);
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    /* --- Header --- */
+    .cv-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-bottom: 40px;
+        border-bottom: 2px solid var(--text-color);
+        margin-bottom: 40px;
+        gap: 24px;
+    }
+
+    .cv-title-area h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--text-color);
+        margin-bottom: 8px;
+        letter-spacing: -1px;
+        line-height: 1;
+    }
+
+    .cv-title-area h2 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--accent-color);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* --- Botón de Descarga --- */
+    .btn-download {
+        display: inline-block;
+        background-color: var(--text-color);
+        color: var(--bg-color);
+        padding: 14px 28px;
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 2px solid var(--text-color);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+
+    .btn-download:hover {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+
+    /* --- Descripción --- */
+    .cv-description {
+        margin-bottom: 60px;
+    }
+
+    .cv-description p {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--accent-color);
+        max-width: 100%;
+    }
+
+    /* --- Grid de Secciones --- */
+    .cv-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px 40px;
+    }
+
+    .cv-section {
+        border-top: 1px solid var(--border-color);
+        padding-top: 24px;
+    }
+
+    .cv-section-full {
+        grid-column: 1 / -1;
+    }
+
+    .cv-section h3 {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--text-color);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 24px;
+    }
+
+    /* --- Experiencia --- */
+    .experience-list {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .experience-item {
+        border-left: 2px solid var(--border-color);
+        padding-left: 20px;
+        transition: border-color 0.3s ease;
+    }
+
+    .experience-item:hover {
+        border-left-color: var(--text-color);
+    }
+
+    .experience-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        gap: 16px;
+    }
+
+    .experience-item h4 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin-bottom: 4px;
+    }
+
+    .company {
+        font-size: 0.9rem;
+        color: var(--accent-color);
+        font-weight: 500;
+    }
+
+    .duration {
+        font-size: 0.8rem;
+        color: var(--accent-color);
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    .experience-item p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: var(--accent-color);
+    }
+
+    /* --- Educación --- */
+    .education-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .education-item {
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .education-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .education-item h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin-bottom: 6px;
+    }
+
+    .institution {
+        display: block;
+        font-size: 0.9rem;
+        color: var(--accent-color);
+        margin-bottom: 4px;
+    }
+
+    /* --- Listas --- */
+    .skills-list,
+    .projects-list,
+    .contact-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .skills-list li {
+        font-size: 0.9rem;
+        color: var(--accent-color);
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .skills-list li:last-child {
+        border-bottom: none;
+    }
+
+    /* --- Proyectos y Contacto --- */
+    .projects-list li,
+    .contact-list li {
+        padding: 8px 0;
+    }
+
+    .projects-list a,
+    .contact-list a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    .projects-list a::before,
+    .contact-list a::before {
+        content: '→';
+        margin-right: 8px;
+        transition: margin-right 0.3s ease;
+    }
+
+    .projects-list a:hover,
+    .contact-list a:hover {
+        color: var(--accent-color);
+    }
+
+    .projects-list a:hover::before,
+    .contact-list a:hover::before {
+        margin-right: 12px;
+    }
+
+    /* --- Footer --- */
+    .cv-footer {
+        margin-top: 60px;
+        padding-top: 40px;
+        border-top: 2px solid var(--text-color);
+        text-align: center;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+        .curriculum-section {
+            padding: 80px 0;
+        }
+
+        .cv-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .cv-title-area h1 {
+            font-size: 2.2rem;
+        }
+
+        .cv-title-area h2 {
+            font-size: 1rem;
+        }
+
+        .btn-download {
+            width: 100%;
+            text-align: center;
+        }
+
+        .cv-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .experience-header {
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .duration {
+            white-space: normal;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .curriculum-section {
+            padding: 60px 0;
+        }
+
+        .cv-header {
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .cv-title-area h1 {
+            font-size: 1.8rem;
+        }
+
+        .cv-description {
+            margin-bottom: 40px;
+        }
+
+        .cv-description p {
+            font-size: 0.95rem;
+        }
+
+        .cv-grid {
+            gap: 32px;
+        }
+
+        .experience-item {
+            padding-left: 16px;
+        }
+
+        .cv-footer {
+            margin-top: 40px;
+            padding-top: 30px;
+        }
+    }
+</style>

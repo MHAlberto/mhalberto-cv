@@ -1,0 +1,282 @@
+---
+title: "Página no encontrada"
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Página no encontrada</title>
+</head>
+<body>
+    <section class="error-page">
+        <div class="container">
+            <div class="error-content">
+                <div class="error-number">404</div>
+                <h1>Página no encontrada</h1>
+                <p>Lo sentimos, la página que buscas no existe o ha sido movida.</p>
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary">Volver al Inicio</a>
+                    <a href="/contacto" class="btn btn-secondary">Contactar</a>
+                </div>
+            </div>
+            
+            <div class="error-links">
+                <h2>Quizás te interese:</h2>
+                <ul>
+                    <li><a href="/sobre">Sobre Mí</a></li>
+                    <li><a href="/proyectos/web">Proyectos Web</a></li>
+                    <li><a href="/blog/tutoriales">Tutoriales</a></li>
+                    <li><a href="/cv">Currículum</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<style>
+    /* --- Variables --- */
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #111111;
+        --accent-color: #666666;
+        --border-color: #eeeeee;
+        --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    /* --- Reset --- */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: var(--font-main);
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* --- Error Page --- */
+    .error-page {
+        width: 100%;
+        padding: 60px 24px;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    /* --- Error Content --- */
+    .error-content {
+        border: 2px solid var(--border-color);
+        padding: 80px 40px;
+        margin-bottom: 60px;
+        transition: border-color 0.3s ease;
+    }
+
+    .error-content:hover {
+        border-color: var(--text-color);
+    }
+
+    /* --- Número 404 --- */
+    .error-number {
+        font-size: 10rem;
+        font-weight: 800;
+        color: var(--text-color);
+        line-height: 1;
+        margin-bottom: 20px;
+        letter-spacing: -8px;
+        position: relative;
+    }
+
+    .error-number::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 2px;
+        background-color: var(--text-color);
+    }
+
+    /* --- Título y Descripción --- */
+    .error-content h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin-bottom: 16px;
+        margin-top: 40px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+
+    .error-content p {
+        font-size: 1.1rem;
+        color: var(--accent-color);
+        line-height: 1.7;
+        margin-bottom: 40px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* --- Botones de Acción --- */
+    .error-actions {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 14px 32px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 2px solid var(--text-color);
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+
+    .btn-secondary {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+    }
+
+    /* --- Links Útiles --- */
+    .error-links {
+        border-top: 1px solid var(--border-color);
+        padding-top: 40px;
+    }
+
+    .error-links h2 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--text-color);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 24px;
+    }
+
+    .error-links ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+    }
+
+    .error-links li a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    .error-links li a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--text-color);
+        transition: width 0.3s ease;
+    }
+
+    .error-links li a:hover {
+        color: var(--text-color);
+    }
+
+    .error-links li a:hover::after {
+        width: 100%;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+        .error-content {
+            padding: 60px 30px;
+            margin-bottom: 40px;
+        }
+
+        .error-number {
+            font-size: 7rem;
+            letter-spacing: -5px;
+        }
+
+        .error-content h1 {
+            font-size: 1.5rem;
+        }
+
+        .error-content p {
+            font-size: 1rem;
+        }
+
+        .error-actions {
+            flex-direction: column;
+        }
+
+        .btn {
+            width: 100%;
+        }
+
+        .error-links ul {
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .error-content {
+            padding: 40px 20px;
+        }
+
+        .error-number {
+            font-size: 5rem;
+            letter-spacing: -3px;
+        }
+
+        .error-number::after {
+            width: 60px;
+        }
+
+        .error-content h1 {
+            font-size: 1.3rem;
+            margin-top: 30px;
+        }
+
+        .error-content p {
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+    }
+</style>
