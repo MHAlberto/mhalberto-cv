@@ -1,0 +1,36 @@
+---
+import BlogLayout from "../../components/blog/BlogLayout.astro";
+import BlogHeader from "../../components/blog/BlogHeader.astro";
+import BlogContent from "../../components/blog/BlogContent.astro";
+import Navbar from "../../components/Navbar.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+type BlogPost = CollectionEntry<"blog">;
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post: BlogPost) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props as { post: BlogPost };
+const { Content } = await post.render();
+---
+
+<BlogLayout title={post.data.title} description={post.data.description}>
+  <Navbar slot="navbar" />
+
+  <BlogHeader
+    title={post.data.title}
+    date={post.data.date}
+    readingTime={post.data.readingTime}
+    category={post.data.category}
+  />
+
+  <BlogContent>
+    <Content />
+  </BlogContent>
+</BlogLayout>

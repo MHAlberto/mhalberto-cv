@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { link } from "../../utils/links";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="blog-card">
+  <a href={link(`blog/${post.slug}`)}>
+    <h3>{post.data.title}</h3>
+    <p>{post.data.description}</p>
+
+    <div class="meta">
+      <span>{post.data.date}</span>
+      <span>{post.data.readingTime} min</span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .blog-card {
+    border: 1px solid #eee;
+    padding: 1.5rem;
+    transition: 0.2s;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .blog-card a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+</style>

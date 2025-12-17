@@ -1,0 +1,68 @@
+---
+const { title, description } = Astro.props;
+import Footer from "../Footer.astro";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <slot name="meta" />
+  </head>
+
+  <body>
+    <slot name="navbar" />
+
+    <main class="blog-layout">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --accent-color: #666666;
+    --border-color: #eeeeee;
+    --font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+
+  .blog-layout {
+    max-width: 780px;
+    margin: 60px auto 100px;
+    padding: 0 24px;
+  }
+
+  .blog-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 40px 24px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .blog-layout {
+      margin: 40px auto 60px;
+    }
+  }
+</style>

@@ -1,0 +1,116 @@
+---
+// Este componente envuelve el contenido Markdown/MDX
+---
+
+<div class="blog-content">
+  <slot />
+</div>
+
+<style is:global>
+  .blog-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #222222;
+  }
+
+  .blog-content p {
+    margin-bottom: 24px;
+  }
+
+  .blog-content h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+  }
+
+  .blog-content h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  .blog-content a {
+    color: #111111;
+    text-decoration: none;
+    border-bottom: 2px solid #111111;
+    transition: opacity 0.2s;
+  }
+
+  .blog-content a:hover {
+    opacity: 0.6;
+  }
+
+  .blog-content strong {
+    font-weight: 700;
+  }
+
+  .blog-content em {
+    font-style: italic;
+  }
+
+  .blog-content code {
+    background: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: "Monaco", "Courier New", monospace;
+  }
+
+  .blog-content pre code {
+    background: none;
+    padding: 0;
+  }
+
+  .blog-content blockquote {
+    border-left: 3px solid #111111;
+    padding-left: 24px;
+    margin: 32px 0;
+    font-style: italic;
+    color: #666666;
+  }
+
+  .blog-content ul,
+  .blog-content ol {
+    margin: 24px 0;
+    padding-left: 28px;
+  }
+
+  .blog-content li {
+    margin-bottom: 10px;
+  }
+
+  .blog-content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 50px 0;
+  }
+
+  /* Estilos para bloques de código generados por Markdown */
+  .blog-content pre {
+    background: #111111;
+    color: #e5e7eb;
+    padding: 24px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 40px 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border: 1px solid #e5e5e5;
+  }
+
+  .blog-content pre::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .blog-content pre::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+
+  .blog-content pre::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 4px;
+  }
+</style>

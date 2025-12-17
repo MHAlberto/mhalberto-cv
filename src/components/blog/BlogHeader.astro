@@ -1,0 +1,62 @@
+---
+const { title, date, readingTime, category } = Astro.props;
+---
+
+<header class="blog-header">
+  {category && <span class="category">{category}</span>}
+
+  <h1 class="title">{title}</h1>
+
+  <div class="meta">
+    <time datetime={date}>{date}</time>
+    <span class="separator">·</span>
+    <span>{readingTime} min de lectura</span>
+  </div>
+</header>
+
+<style>
+  .blog-header {
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .category {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #666666;
+    margin-bottom: 16px;
+    padding: 4px 12px;
+    border: 1px solid #eeeeee;
+  }
+
+  .title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #666666;
+    letter-spacing: 0.5px;
+  }
+
+  .separator {
+    color: #cccccc;
+  }
+
+  @media (max-width: 768px) {
+    .title {
+      font-size: 2rem;
+    }
+  }
+</style>

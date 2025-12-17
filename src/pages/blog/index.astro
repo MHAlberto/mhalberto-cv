@@ -1,0 +1,12 @@
+---
+import BlogIndex from "../../components/blog/BlogIndex.astro";
+import BlogLayout from "../../components/blog/BlogLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog");
+---
+
+<BlogLayout title="Blog" description="Artículos sobre programación y software">
+  <Navbar slot="navbar" />
+  <BlogIndex posts={posts} />
+</BlogLayout>

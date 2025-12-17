@@ -1,17 +1,14 @@
 ---
-const base = import.meta.env.BASE_URL;
-
-const link = (path: string = '') =>
-  `${base}${path}`.replace(/\/+$/, '/') // asegura slash final
+const link = (path = "") => {
+  const base = import.meta.env.BASE_URL.replace(/\/+$/, "");
+  const cleanPath = path.replace(/^\/+/, "");
+  return `${base}/${cleanPath}/`;
+};
 ---
-
-
 
 <header class="navbar">
   <div class="container">
-    <a href={link('')} class="logo">
-      M.H. Alberto
-    </a>
+    <a href={link("")} class="logo"> M.H. Alberto </a>
 
     <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
       <span class="bar"></span>
@@ -21,42 +18,56 @@ const link = (path: string = '') =>
 
     <nav id="nav-menu" class="nav-menu">
       <ul class="main-list">
-        <li><a href={link('')} class="nav-link">Inicio</a></li>
-        <li><a href={link('sobre')} class="nav-link">Sobre Mí</a></li>
+        <li><a href={link("")} class="nav-link">Inicio</a></li>
+        <li><a href={link("sobre")} class="nav-link">Sobre Mí</a></li>
 
         <li class="dropdown">
           <button class="nav-link dropdown-btn">
             Proyectos
-            <svg class="arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M1 1L5 5L9 1"/>
+            <svg
+              class="arrow"
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M1 1L5 5L9 1"></path>
             </svg>
           </button>
           <ul class="dropdown-content">
-            <li><a href={link('proyectos/web')}>Web Development</a></li>
-            <li><a href={link('proyectos/node')}>Node.js</a></li>
-            <li><a href={link('proyectos/python')}>Python & AI</a></li>
+            <li><a href={link("proyectos/web")}>Web Development</a></li>
+            <li><a href={link("proyectos/node")}>Node.js</a></li>
+            <li><a href={link("proyectos/python")}>Python & AI</a></li>
           </ul>
         </li>
 
-        <li><a href={link('contacto')} class="nav-link">Contacto</a></li>
+        <li><a href={link("contacto")} class="nav-link">Contacto</a></li>
 
         <li class="dropdown">
           <button class="nav-link dropdown-btn">
             Blog
-            <svg class="arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M1 1L5 5L9 1"/>
+            <svg
+              class="arrow"
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M1 1L5 5L9 1"></path>
             </svg>
           </button>
           <ul class="dropdown-content">
-            <li><a href={link('blog/tutoriales')}>Tutoriales</a></li>
-            <li><a href={link('blog/proyectos')}>Reseñas</a></li>
+            <li><a href={link("blog/")}>Inicio</a></li>
+            <li><a href={link("blog/proyectos")}>Reseñas</a></li>
           </ul>
         </li>
 
         <li>
-          <a href={link('cv')} class="nav-link btn-primary">
-            Currículum
-          </a>
+          <a href={link("cv")} class="nav-link btn-primary"> Currículum </a>
         </li>
       </ul>
     </nav>
@@ -64,267 +75,291 @@ const link = (path: string = '') =>
 </header>
 
 <script>
-    // Menú Móvil
-    const menuToggle = document.getElementById('menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
+  // Menú Móvil
+  const menuToggle = document.getElementById("menu-toggle");
+  const navMenu = document.getElementById("nav-menu");
 
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('open');
-        });
-    }
-
-    // Lógica Dropdown (Con la corrección del error TS)
-    const dropdowns = document.querySelectorAll('.dropdown');
-    
-    dropdowns.forEach(drop => {
-        const btn = drop.querySelector('.dropdown-btn');
-        
-        // CORRECCIÓN: Verificamos que 'btn' exista antes de usarlo
-        if (btn) {
-            btn.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    // Cerramos otros dropdowns si queremos comportamiento exclusivo (opcional)
-                    dropdowns.forEach(d => {
-                        if (d !== drop) d.classList.remove('active');
-                    });
-                    drop.classList.toggle('active');
-                }
-            });
-        }
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      menuToggle.classList.toggle("open");
     });
+  }
+
+  // Lógica Dropdown (Con la corrección del error TS)
+  const dropdowns = document.querySelectorAll(".dropdown");
+
+  dropdowns.forEach((drop) => {
+    const btn = drop.querySelector(".dropdown-btn");
+
+    // CORRECCIÓN: Verificamos que 'btn' exista antes de usarlo
+    if (btn) {
+      btn.addEventListener("click", (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          // Cerramos otros dropdowns si queremos comportamiento exclusivo (opcional)
+          dropdowns.forEach((d) => {
+            if (d !== drop) d.classList.remove("active");
+          });
+          drop.classList.toggle("active");
+        }
+      });
+    }
+  });
 </script>
 
 <style>
-    /* --- Variables --- */
-    :root {
-        --bg-color: #ffffff;
-        --text-color: #111111;
-        --accent-color: #666666;
-        --border-color: #eeeeee;
-        --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        --nav-height: 80px;
+  /* --- Variables --- */
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --accent-color: #666666;
+    --border-color: #eeeeee;
+    --font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --nav-height: 80px;
+  }
+
+  /* --- General --- */
+  .navbar {
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+    height: var(--nav-height);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: var(--font-main);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* --- Logo --- */
+  .logo {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-color);
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 2px solid var(--text-color);
+    padding: 6px 12px;
+    transition: 0.3s;
+  }
+  .logo:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+  }
+
+  /* --- Navegación Principal (Horizontal) --- */
+  /* Usamos '>' para que solo afecte a la lista principal y NO a los dropdowns */
+  .nav-menu > .main-list {
+    list-style: none;
+    display: flex; /* Esto hace el menú principal horizontal */
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 0;
+  }
+
+  .nav-link:hover {
+    color: var(--accent-color);
+  }
+
+  /* --- Dropdown (Estrictamente Vertical) --- */
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-content {
+    /* Oculto por defecto */
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    /* Estilos de caja */
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    min-width: 220px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 10px 0;
+    z-index: 100;
+
+    /* FORZAR VERTICALIDAD */
+    display: flex;
+    flex-direction: column; /* Clave: Elementos uno debajo del otro */
+    gap: 0; /* Sin espacio extra, controlado por padding */
+    list-style: none;
+    margin: 0;
+
+    transition: all 0.3s ease;
+    transform: translateY(10px);
+  }
+
+  /* Mostrar al hover */
+  .dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-content li {
+    width: 100%;
+  }
+
+  .dropdown-content li a {
+    display: block; /* Ocupa todo el ancho */
+    padding: 12px 20px;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.2s;
+    border-left: 2px solid transparent;
+  }
+
+  .dropdown-content li a:hover {
+    color: var(--text-color);
+    background-color: #f9f9f9;
+    border-left: 2px solid var(--text-color); /* Detalle elegante al hover */
+  }
+
+  .arrow {
+    transition: transform 0.3s;
+  }
+  .dropdown:hover .arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Botón Curriculum */
+  .btn-primary {
+    background: var(--text-color);
+    color: #fff !important;
+    padding: 8px 18px;
+    transition: opacity 0.3s;
+  }
+  .btn-primary:hover {
+    opacity: 0.8;
+    color: #fff;
+  }
+
+  /* --- Mobile --- */
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .bar {
+    width: 26px;
+    height: 2px;
+    background: var(--text-color);
+    transition: 0.3s;
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
     }
 
-    /* --- General --- */
-    .navbar {
-        background-color: var(--bg-color);
-        border-bottom: 1px solid var(--border-color);
-        height: var(--nav-height);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        font-family: var(--font-main);
+    .nav-menu {
+      position: absolute;
+      top: var(--nav-height);
+      left: 0;
+      width: 100%;
+      background: var(--bg-color);
+      border-bottom: 1px solid var(--border-color);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
     }
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    .nav-menu.active {
+      max-height: 600px;
     }
 
-    /* --- Logo --- */
-    .logo {
-        font-size: 1.2rem;
-        font-weight: 800;
-        color: var(--text-color);
-        text-decoration: none;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        border: 2px solid var(--text-color);
-        padding: 6px 12px;
-        transition: 0.3s;
-    }
-    .logo:hover {
-        background-color: var(--text-color);
-        color: var(--bg-color);
-    }
-
-    /* --- Navegación Principal (Horizontal) --- */
-    /* Usamos '>' para que solo afecte a la lista principal y NO a los dropdowns */
+    /* En móvil, la lista principal también es vertical */
     .nav-menu > .main-list {
-        list-style: none;
-        display: flex; /* Esto hace el menú principal horizontal */
-        gap: 30px;
-        margin: 0;
-        padding: 0;
-        align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      width: 100%;
+    }
+
+    .nav-menu > .main-list > li {
+      width: 100%;
+      border-bottom: 1px solid #f5f5f5;
     }
 
     .nav-link {
-        text-decoration: none;
-        color: var(--text-color);
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        position: relative;
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 5px 0;
+      width: 100%;
+      padding: 15px 24px;
+      justify-content: space-between;
     }
 
-    .nav-link:hover {
-        color: var(--accent-color);
-    }
-
-    /* --- Dropdown (Estrictamente Vertical) --- */
-    .dropdown {
-        position: relative;
-    }
-
+    /* Dropdown en móvil */
     .dropdown-content {
-        /* Oculto por defecto */
-        opacity: 0;
-        visibility: hidden;
-        position: absolute;
-        top: 100%; 
-        left: 0;
-        
-        /* Estilos de caja */
-        background-color: var(--bg-color);
-        border: 1px solid var(--border-color);
-        min-width: 220px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        padding: 10px 0;
-        z-index: 100;
-        
-        /* FORZAR VERTICALIDAD */
-        display: flex;
-        flex-direction: column; /* Clave: Elementos uno debajo del otro */
-        gap: 0; /* Sin espacio extra, controlado por padding */
-        list-style: none;
-        margin: 0;
-        
-        transition: all 0.3s ease;
-        transform: translateY(10px);
+      position: static; /* Ya no flota, empuja el contenido */
+      display: none; /* Oculto hasta clic */
+      box-shadow: none;
+      border: none;
+      background: #fafafa;
+      padding-left: 20px;
+      transform: none;
+      width: 100%;
     }
 
-    /* Mostrar al hover */
-    .dropdown:hover .dropdown-content {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
+    .dropdown.active .dropdown-content {
+      display: flex; /* Mantenemos flex-column al abrir */
+      opacity: 1;
+      visibility: visible;
     }
 
-    .dropdown-content li {
-        width: 100%;
+    .dropdown.active .arrow {
+      transform: rotate(180deg);
     }
 
-    .dropdown-content li a {
-        display: block; /* Ocupa todo el ancho */
-        padding: 12px 20px;
-        color: var(--accent-color);
-        text-decoration: none;
-        font-size: 0.85rem;
-        transition: 0.2s;
-        border-left: 2px solid transparent;
+    /* Animación Hamburgesa */
+    .menu-toggle.open .bar:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+    .menu-toggle.open .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.open .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -6px);
     }
 
-    .dropdown-content li a:hover {
-        color: var(--text-color);
-        background-color: #f9f9f9;
-        border-left: 2px solid var(--text-color); /* Detalle elegante al hover */
-    }
-
-    .arrow { transition: transform 0.3s; }
-    .dropdown:hover .arrow { transform: rotate(180deg); }
-
-    /* Botón Curriculum */
     .btn-primary {
-        background: var(--text-color);
-        color: #fff !important;
-        padding: 8px 18px;
-        transition: opacity 0.3s;
+      margin: 15px 24px;
+      width: calc(100% - 48px);
+      justify-content: center;
     }
-    .btn-primary:hover { opacity: 0.8; color: #fff; }
-
-    /* --- Mobile --- */
-    .menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        flex-direction: column;
-        gap: 6px;
-        cursor: pointer;
-    }
-    .bar { width: 26px; height: 2px; background: var(--text-color); transition: 0.3s; }
-
-    @media (max-width: 768px) {
-        .menu-toggle { display: flex; }
-
-        .nav-menu {
-            position: absolute;
-            top: var(--nav-height);
-            left: 0;
-            width: 100%;
-            background: var(--bg-color);
-            border-bottom: 1px solid var(--border-color);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-
-        .nav-menu.active { max-height: 600px; }
-
-        /* En móvil, la lista principal también es vertical */
-        .nav-menu > .main-list {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0;
-            width: 100%;
-        }
-
-        .nav-menu > .main-list > li {
-            width: 100%;
-            border-bottom: 1px solid #f5f5f5;
-        }
-
-        .nav-link {
-            width: 100%;
-            padding: 15px 24px;
-            justify-content: space-between;
-        }
-
-        /* Dropdown en móvil */
-        .dropdown-content {
-            position: static; /* Ya no flota, empuja el contenido */
-            display: none; /* Oculto hasta clic */
-            box-shadow: none;
-            border: none;
-            background: #fafafa;
-            padding-left: 20px;
-            transform: none;
-            width: 100%;
-        }
-
-        .dropdown.active .dropdown-content {
-            display: flex; /* Mantenemos flex-column al abrir */
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .dropdown.active .arrow { transform: rotate(180deg); }
-
-        /* Animación Hamburgesa */
-        .menu-toggle.open .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-        .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
-        .menu-toggle.open .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-        
-        .btn-primary { 
-            margin: 15px 24px; 
-            width: calc(100% - 48px);
-            justify-content: center;
-        }
-    }
+  }
 </style>

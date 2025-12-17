@@ -1,0 +1,29 @@
+---
+const { src, alt, caption } = Astro.props;
+---
+
+<figure class="blog-image">
+  <img src={src} alt={alt} loading="lazy" />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .blog-image {
+    margin: 50px 0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #eeeeee;
+    border-radius: 4px;
+  }
+
+  figcaption {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: #666666;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+</style>

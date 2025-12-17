@@ -1,0 +1,29 @@
+---
+import BlogCategory from "./BlogCategory.astro";
+import type { CollectionEntry } from "astro:content";
+
+type BlogPost = CollectionEntry<"blog">;
+
+interface Props {
+  posts: BlogPost[];
+}
+
+const { posts } = Astro.props;
+
+/* 👇 TIPADO EXPLÍCITO */
+const categories: Record<string, BlogPost[]> = posts.reduce(
+  (acc, post) => {
+    const cat = post.data.category;
+    acc[cat] ??= [];
+    acc[cat].push(post);
+    return acc;
+  },
+  {} as Record<string, BlogPost[]>
+);
+---
+
+{
+  Object.entries(categories).map(([category, posts]) => (
+    <BlogCategory category={category} posts={posts} />
+  ))
+}

@@ -1,0 +1,33 @@
+---
+import BlogIndex from "../../../components/blog/BlogIndex.astro";
+import BlogLayout from "../../../components/blog/BlogLayout.astro";
+import Navbar from "../../../components/Navbar.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+type BlogPost = CollectionEntry<"blog">;
+
+/* 🔥 Generar rutas por categoría */
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  const categories = [...new Set(posts.map((p: BlogPost) => p.data.category))];
+
+  return categories.map((category) => ({
+    params: { category },
+  }));
+}
+
+const { category } = Astro.params;
+
+const posts = (await getCollection("blog")).filter(
+  (p: BlogPost) => p.data.category === category
+);
+---
+
+<BlogLayout
+  title={`Blog · ${category}`}
+  description={`Artículos sobre ${category}`}
+>
+  <Navbar slot="navbar" />
+  <BlogIndex posts={posts} />
+</BlogLayout>
